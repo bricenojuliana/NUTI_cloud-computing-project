@@ -20,3 +20,6 @@ deploy.sh
 
 # Node modules (if testing framework is added)
 node_modules/
+
+#Kiro
+.kiro/

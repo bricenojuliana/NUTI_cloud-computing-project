@@ -26,7 +26,9 @@ describe('Task 5.1: Smooth Scrolling for Anchor Links', () => {
         const htmlPath = path.resolve(__dirname, '../index.html');
         const htmlContent = fs.readFileSync(htmlPath, 'utf8');
         
-        expect(htmlContent).toContain('src="js/script.js"');
+        // Accept either minified or non-minified version
+        const hasScript = htmlContent.includes('src="js/script.js"') || htmlContent.includes('src="js/script.min.js"');
+        expect(hasScript).toBe(true);
     });
 
     test('script.js handles anchor links with hash', () => {

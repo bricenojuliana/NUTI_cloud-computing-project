@@ -1,0 +1,22 @@
+# Build artifacts
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Azure deployment files (if auto-generated)
+.deployment
+deploy.sh
+
+# Node modules (if testing framework is added)
+node_modules/

@@ -1,0 +1,820 @@
+/* ===================================
+   CSS Reset and Normalization
+   =================================== */
+
+/* Apply box-sizing to all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent font size inflation on mobile */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===================================
+   CSS Variables - Color Palette
+   =================================== */
+
+:root {
+  /* Primary Colors */
+  --color-primary: #2c3e50;
+  --color-primary-light: #34495e;
+  --color-primary-dark: #1a252f;
+  
+  /* Accent Colors */
+  --color-accent: #3498db;
+  --color-accent-light: #5dade2;
+  --color-accent-dark: #2980b9;
+  
+  /* Neutral Colors */
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-text-lighter: #999999;
+  --color-background: #ffffff;
+  --color-background-alt: #f8f9fa;
+  --color-border: #e0e0e0;
+  
+  /* Semantic Colors */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-error: #e74c3c;
+  
+  /* Typography Variables */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-heading: 'Georgia', 'Times New Roman', serif;
+  
+  /* Font Sizes - Minimum 14px */
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.25rem;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+  
+  /* Layout */
+  --container-max-width: 1200px;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-speed: 0.3s;
+}
+
+/* ===================================
+   Base Typography
+   =================================== */
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+/* Lists */
+ul,
+ol {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Strong and emphasis */
+strong,
+b {
+  font-weight: var(--font-weight-bold);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/* Small text - ensure minimum 14px */
+small {
+  font-size: var(--font-size-small);
+}
+
+/* ===================================
+   Component Styles
+   =================================== */
+
+/* Profile Photo */
+.profile-photo {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--box-shadow);
+  border: 4px solid var(--color-background);
+}
+
+/* ===================================
+   Summary Section Styles
+   =================================== */
+
+#summary {
+  background-color: var(--color-background-alt);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: var(--box-shadow);
+  margin-top: 0;
+}
+
+#summary h2 {
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+#summary p {
+  font-size: var(--font-size-large);
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 0;
+}
+
+/* ===================================
+   Education Section Styles
+   =================================== */
+
+#education h2 {
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.education-entry {
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-speed);
+}
+
+.education-entry:hover {
+  box-shadow: var(--box-shadow);
+  border-color: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+.education-entry h3 {
+  font-size: var(--font-size-h3);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.education-entry .institution {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-xs);
+}
+
+.education-entry .field {
+  color: var(--color-text-light);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-xs);
+  font-style: italic;
+}
+
+.education-entry .year {
+  color: var(--color-accent);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-background-alt);
+  border-radius: calc(var(--border-radius) / 2);
+}
+
+/* ===================================
+   Skills Section Styles
+   =================================== */
+
+#skills h2 {
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.skill-category {
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.skill-category h3 {
+  font-size: var(--font-size-h4);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  font-weight: var(--font-weight-semibold);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+/* Professional Title */
+.professional-title {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-light);
+}
+
+/* Skill Tags */
+.skill {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-accent-light);
+  border: 1px solid var(--color-accent);
+  border-radius: calc(var(--border-radius) / 2);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-background);
+  transition: all var(--transition-speed);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.skill:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================================
+   Projects Section Styles
+   =================================== */
+
+#projects h2 {
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.project {
+  background-color: var(--color-background);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-speed);
+  position: relative;
+}
+
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.project:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  border-color: var(--color-accent-light);
+}
+
+.project h3 {
+  font-size: var(--font-size-h3);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+.project-description {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+.technologies {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-background-alt);
+  border-radius: calc(var(--border-radius) / 2);
+  display: inline-block;
+}
+
+.project a {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  border-radius: calc(var(--border-radius) / 2);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-speed);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project a:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* ===================================
+   Contact Section Styles
+   =================================== */
+
+#contact {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  padding: var(--spacing-xxl);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+#contact h2 {
+  color: var(--color-background);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-h2);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.contact-info p {
+  font-size: var(--font-size-base);
+  margin-bottom: 0;
+}
+
+.contact-info a {
+  color: var(--color-background);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-large);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--color-background);
+  border-radius: calc(var(--border-radius) / 2);
+  transition: all var(--transition-speed);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.contact-info a:hover {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+/* ===================================
+   Responsive Typography
+   =================================== */
+
+/* Ensure minimum 14px font size across all viewports */
+@media screen and (max-width: 768px) {
+  :root {
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-h1: 2rem;
+    --font-size-h2: 1.75rem;
+    --font-size-h3: 1.5rem;
+    --font-size-h4: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-h1: 1.75rem;
+    --font-size-h2: 1.5rem;
+    --font-size-h3: 1.25rem;
+    --font-size-h4: 1.125rem;
+  }
+}
+
+/* ===================================
+   Layout System
+   =================================== */
+
+/* Container - Max-width and Centering */
+.container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+  width: 100%;
+}
+
+/* Body as main container */
+body {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+/* Section Spacing and Padding */
+section {
+  padding: var(--spacing-xl) 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* First section - reduce top padding */
+section:first-of-type {
+  padding-top: var(--spacing-lg);
+}
+
+/* Last section - reduce bottom padding */
+section:last-of-type {
+  padding-bottom: var(--spacing-lg);
+  margin-bottom: 0;
+}
+
+/* Header spacing */
+header {
+  padding: var(--spacing-xl) 0;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+/* ===================================
+   Flexbox/Grid Layout System
+   =================================== */
+
+/* Header Layout - Flexbox for centering */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+/* Skills Container - Grid Layout */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+/* Skill Category - Flexbox */
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Skill Group - Flexbox with wrapping */
+.skill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* Education Entries - Flexbox */
+#education {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.education-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Projects - Flexbox */
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Contact Info - Flexbox */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+/* ===================================
+   Responsive Layout - Mobile First
+   =================================== */
+
+/* Base: Mobile (320px+) - Vertical stacking by default */
+/* Already implemented above with flex-direction: column */
+
+/* Tablet (768px+) - Maintain vertical stacking per requirement 7.3 */
+@media screen and (min-width: 768px) {
+  body {
+    padding: var(--spacing-lg);
+  }
+  
+  section {
+    padding: var(--spacing-xxl) 0;
+  }
+  
+  header {
+    padding: var(--spacing-xxl) 0;
+  }
+  
+  /* Profile photo - larger on tablet and desktop */
+  .profile-photo {
+    width: 350px;
+    height: 350px;
+  }
+  
+  /* Skills can use more columns on larger screens */
+  .skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  /* Contact info can be horizontal on larger screens */
+  .contact-info {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+  }
+  
+  /* Summary section - larger padding on tablet */
+  #summary {
+    padding: var(--spacing-xxl);
+  }
+  
+  /* Project cards - more padding on larger screens */
+  .project {
+    padding: var(--spacing-xxl);
+  }
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+  body {
+    padding: var(--spacing-xl);
+  }
+  
+  /* Profile photo - maximum size on desktop */
+  .profile-photo {
+    width: 400px;
+    height: 400px;
+  }
+  
+  /* Skills can use 3 columns on desktop */
+  .skills-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large Desktop (1920px) - Maximum width constraint */
+@media screen and (min-width: 1920px) {
+  body {
+    max-width: var(--container-max-width);
+  }
+}
+
+/* ===================================
+   Responsive Vertical Stacking
+   =================================== */
+
+/* Ensure vertical stacking below 768px (Requirement 7.3) */
+@media screen and (max-width: 767px) {
+  /* Force single column layout */
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Profile photo - smaller on mobile */
+  .profile-photo {
+    width: 250px;
+    height: 250px;
+  }
+  
+  /* Reduce spacing on mobile */
+  body {
+    padding: var(--spacing-sm);
+  }
+  
+  section {
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  header {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  /* Summary section - reduced padding on mobile */
+  #summary {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Project cards - reduced padding on mobile */
+  .project {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Contact section - reduced padding on mobile */
+  #contact {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* Extra small devices (320px) */
+@media screen and (max-width: 480px) {
+  body {
+    padding: var(--spacing-xs);
+  }
+  
+  section {
+    padding: var(--spacing-md) 0;
+  }
+  
+  header {
+    padding: var(--spacing-md) 0;
+  }
+  
+  /* Profile photo - minimum size on very small screens */
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Summary section - minimal padding on very small screens */
+  #summary {
+    padding: var(--spacing-md);
+  }
+  
+  /* Project cards - minimal padding on very small screens */
+  .project {
+    padding: var(--spacing-md);
+  }
+  
+  /* Contact section - minimal padding on very small screens */
+  #contact {
+    padding: var(--spacing-lg);
+  }
+  
+  /* Reduce font sizes slightly for very small screens */
+  #contact h2 {
+    font-size: var(--font-size-h3);
+  }
+  
+  .contact-info a {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}

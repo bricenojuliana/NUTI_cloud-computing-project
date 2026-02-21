@@ -33,7 +33,7 @@ professional-cv-website/
 
 1. Clone this repository:
    ```bash
-   git clone <repository-url>
+   git clone [NUTI_cloud-computing-project](https://github.com/bricenojuliana/NUTI_cloud-computing-project.git)
    cd professional-cv-website
    ```
 

@@ -13,8 +13,11 @@ Sitio web estático de una sola página (single-page) que funciona como CV profe
 
 ## URL del sitio publicado en Azure
 
-<!-- Reemplazar con la URL una vez desplegado en Azure -->
-**URL:** _Pendiente de despliegue_
+**URL:** [_CV Profesional Juliana Briceño_](https://cv-julianabriceno-hqahdxhqb0fccmgm.eastus-01.azurewebsites.net/)
+
+### Screenshots
+<img width="1249" height="882" alt="image" src="https://github.com/user-attachments/assets/e675de64-2a4e-4c12-86a8-0cf62f664c96" />
+
 
 ## Características
 

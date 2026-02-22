@@ -74,9 +74,9 @@ button {
   --color-primary-dark: #1a252f;
   
   /* Accent Colors */
-  --color-accent: #3498db;
-  --color-accent-light: #5dade2;
-  --color-accent-dark: #2980b9;
+  --color-accent: #c0392b;
+  --color-accent-light: #e74c3c;
+  --color-accent-dark: #922b21;
   
   /* Neutral Colors */
   --color-text: #333333;
@@ -289,8 +289,15 @@ small {
 .education-entry h3 {
   font-size: var(--font-size-h3);
   color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
   font-weight: var(--font-weight-bold);
+}
+
+.education-entry .education-subtitle {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
 }
 
 .education-entry .institution {
@@ -298,13 +305,6 @@ small {
   color: var(--color-text);
   font-size: var(--font-size-base);
   margin-bottom: var(--spacing-xs);
-}
-
-.education-entry .field {
-  color: var(--color-text-light);
-  font-size: var(--font-size-base);
-  margin-bottom: var(--spacing-xs);
-  font-style: italic;
 }
 
 .education-entry .year {
@@ -453,55 +453,12 @@ small {
 }
 
 /* ===================================
-   Contact Section Styles
+   Contact Section Styles (Sidebar)
    =================================== */
-
-#contact {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  padding: var(--spacing-xxl);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  text-align: center;
-}
-
-#contact h2 {
-  color: var(--color-background);
-  margin-bottom: var(--spacing-lg);
-  font-size: var(--font-size-h2);
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
-}
-
+/* Contact lives in sidebar - base styles above in Layout System */
 .contact-info p {
   font-size: var(--font-size-base);
   margin-bottom: 0;
-}
-
-.contact-info a {
-  color: var(--color-background);
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-large);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid var(--color-background);
-  border-radius: calc(var(--border-radius) / 2);
-  transition: all var(--transition-speed);
-  text-decoration: none;
-  display: inline-block;
-}
-
-.contact-info a:hover {
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-decoration: none;
 }
 
 /* ===================================
@@ -532,10 +489,203 @@ small {
 }
 
 /* ===================================
-   Layout System
+   Layout System - Two Column
    =================================== */
 
-/* Container - Max-width and Centering */
+/* Body - full width, no max-width constraint for layout */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout wrapper - flex for two columns */
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .layout-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* Sidebar - left column, fixed width on desktop */
+.sidebar {
+  background-color: var(--color-background-alt);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar {
+    width: 300px;
+    min-width: 300px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* Main content - right column, scrollable */
+.main-content {
+  flex: 1;
+  padding: var(--spacing-lg);
+  max-width: 900px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-content {
+    padding: var(--spacing-xl);
+    min-width: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* Sidebar header */
+.sidebar header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar header .profile-photo {
+  margin-bottom: 0;
+  border-color: var(--color-accent);
+}
+
+/* Sidebar sections */
+.sidebar section {
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Sidebar contact - compact, accent red */
+.sidebar #contact h2 {
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-h3);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: var(--spacing-xs);
+}
+
+.sidebar .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: 0;
+}
+
+.sidebar .contact-info a {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: transparent;
+  border: 2px solid var(--color-accent);
+  border-radius: calc(var(--border-radius) / 2);
+  transition: all var(--transition-speed);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.sidebar .contact-info .contact-icon {
+  flex-shrink: 0;
+}
+
+.sidebar .contact-info a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(146, 43, 33, 0.3);
+  text-decoration: none;
+}
+
+/* Sidebar skills - compact */
+.sidebar #skills h2 {
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-h3);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: var(--spacing-xs);
+}
+
+.sidebar .skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: 0;
+}
+
+.sidebar .skill-category {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.sidebar .skill-category h3 {
+  font-size: var(--font-size-small);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+.sidebar .skill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* Main content sections - alternating backgrounds */
+.main-content section {
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius);
+}
+
+.main-content #summary {
+  background-color: var(--color-background);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: var(--box-shadow);
+}
+
+.main-content #education {
+  background-color: var(--color-background-alt);
+}
+
+.main-content #projects {
+  background-color: var(--color-background);
+}
+
+/* Container utility */
 .container {
   max-width: var(--container-max-width);
   margin-left: auto;
@@ -545,56 +695,18 @@ small {
   width: 100%;
 }
 
-/* Body as main container */
-body {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: var(--spacing-md);
-}
-
-/* Section Spacing and Padding */
-section {
-  padding: var(--spacing-xl) 0;
-  margin-bottom: var(--spacing-lg);
-}
-
-/* First section - reduce top padding */
-section:first-of-type {
-  padding-top: var(--spacing-lg);
-}
-
-/* Last section - reduce bottom padding */
-section:last-of-type {
-  padding-bottom: var(--spacing-lg);
-  margin-bottom: 0;
-}
-
-/* Header spacing */
-header {
-  padding: var(--spacing-xl) 0;
-  margin-bottom: var(--spacing-lg);
-  text-align: center;
-}
-
-/* ===================================
-   Flexbox/Grid Layout System
-   =================================== */
-
-/* Header Layout - Flexbox for centering */
-header {
+/* Skills Container - Grid in main content (mobile skills block) */
+.skills-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
 }
 
-/* Skills Container - Grid Layout */
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-md);
+@media screen and (min-width: 768px) {
+  .sidebar .skills-container {
+    gap: var(--spacing-sm);
+  }
 }
 
 /* Skill Category - Flexbox */
@@ -631,190 +743,99 @@ header {
   gap: var(--spacing-lg);
 }
 
-.project {
+#projects > .project {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
 }
 
-/* Contact Info - Flexbox */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-md);
-}
-
 /* ===================================
-   Responsive Layout - Mobile First
+   Responsive Layout - Mobile
    =================================== */
 
-/* Base: Mobile (320px+) - Vertical stacking by default */
-/* Already implemented above with flex-direction: column */
-
-/* Tablet (768px+) - Maintain vertical stacking per requirement 7.3 */
-@media screen and (min-width: 768px) {
-  body {
-    padding: var(--spacing-lg);
-  }
-  
-  section {
-    padding: var(--spacing-xxl) 0;
-  }
-  
-  header {
-    padding: var(--spacing-xxl) 0;
-  }
-  
-  /* Profile photo - larger on tablet and desktop */
-  .profile-photo {
-    width: 350px;
-    height: 350px;
-  }
-  
-  /* Skills can use more columns on larger screens */
-  .skills-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-  
-  /* Contact info can be horizontal on larger screens */
-  .contact-info {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-lg);
-  }
-  
-  /* Summary section - larger padding on tablet */
-  #summary {
-    padding: var(--spacing-xxl);
-  }
-  
-  /* Project cards - more padding on larger screens */
-  .project {
-    padding: var(--spacing-xxl);
-  }
-}
-
-/* Desktop (1024px+) */
-@media screen and (min-width: 1024px) {
-  body {
-    padding: var(--spacing-xl);
-  }
-  
-  /* Profile photo - maximum size on desktop */
-  .profile-photo {
-    width: 400px;
-    height: 400px;
-  }
-  
-  /* Skills can use 3 columns on desktop */
-  .skills-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Large Desktop (1920px) - Maximum width constraint */
-@media screen and (min-width: 1920px) {
-  body {
-    max-width: var(--container-max-width);
-  }
-}
-
-/* ===================================
-   Responsive Vertical Stacking
-   =================================== */
-
-/* Ensure vertical stacking below 768px (Requirement 7.3) */
+/* Mobile: single column, order: photo + name + contact, summary, education, skills, projects */
 @media screen and (max-width: 767px) {
-  /* Force single column layout */
-  .skills-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-info {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Profile photo - smaller on mobile */
-  .profile-photo {
-    width: 250px;
-    height: 250px;
-  }
-  
-  /* Reduce spacing on mobile */
+  html,
   body {
-    padding: var(--spacing-sm);
+    overflow: auto;
+    height: auto;
   }
-  
-  section {
-    padding: var(--spacing-lg) 0;
-    margin-bottom: var(--spacing-md);
-  }
-  
-  header {
-    padding: var(--spacing-lg) 0;
-  }
-  
-  /* Summary section - reduced padding on mobile */
-  #summary {
-    padding: var(--spacing-lg);
-  }
-  
-  /* Project cards - reduced padding on mobile */
-  .project {
-    padding: var(--spacing-lg);
-  }
-  
-  /* Contact section - reduced padding on mobile */
-  #contact {
-    padding: var(--spacing-xl);
-  }
-}
 
-/* Extra small devices (320px) */
-@media screen and (max-width: 480px) {
-  body {
-    padding: var(--spacing-xs);
+  .layout-wrapper {
+    flex-direction: column;
   }
-  
-  section {
-    padding: var(--spacing-md) 0;
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    order: 1;
   }
-  
-  header {
-    padding: var(--spacing-md) 0;
-  }
-  
-  /* Profile photo - minimum size on very small screens */
-  .profile-photo {
+
+  .sidebar header .profile-photo {
     width: 200px;
     height: 200px;
   }
-  
-  /* Summary section - minimal padding on very small screens */
-  #summary {
+
+  .sidebar #skills {
+    order: 2;
+  }
+
+  .sidebar #contact {
+    order: 1;
+  }
+
+  .main-content {
+    order: 2;
     padding: var(--spacing-md);
   }
-  
-  /* Project cards - minimal padding on very small screens */
-  .project {
-    padding: var(--spacing-md);
+
+  .main-content section {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
   }
-  
-  /* Contact section - minimal padding on very small screens */
-  #contact {
+
+  .main-content #summary {
     padding: var(--spacing-lg);
   }
-  
-  /* Reduce font sizes slightly for very small screens */
-  #contact h2 {
-    font-size: var(--font-size-h3);
+
+  .main-content .project {
+    padding: var(--spacing-lg);
   }
-  
-  .contact-info a {
-    font-size: var(--font-size-base);
-    padding: var(--spacing-xs) var(--spacing-md);
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    padding: var(--spacing-md);
+  }
+
+  .sidebar header .profile-photo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .main-content {
+    padding: var(--spacing-sm);
+  }
+
+  .main-content section {
+    padding: var(--spacing-md);
+  }
+
+  .main-content #summary,
+  .main-content .project {
+    padding: var(--spacing-md);
+  }
+
+  .sidebar .contact-info a {
+    font-size: var(--font-size-small);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}
+
+/* Desktop: profile photo size in sidebar */
+@media screen and (min-width: 768px) {
+  .sidebar header .profile-photo {
+    width: 220px;
+    height: 220px;
   }
 }

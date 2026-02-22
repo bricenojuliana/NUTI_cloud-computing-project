@@ -17,6 +17,8 @@ Sitio web estático de una sola página (single-page) que funciona como CV profe
 
 ### Screenshots
 <img width="1249" height="882" alt="image" src="https://github.com/user-attachments/assets/e675de64-2a4e-4c12-86a8-0cf62f664c96" />
+<img width="448" height="782" alt="image" src="https://github.com/user-attachments/assets/7c4fcec9-0a35-44a6-8d53-041ee2032200" />
+
 
 
 ## Características

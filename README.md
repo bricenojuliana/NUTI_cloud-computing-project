@@ -36,21 +36,28 @@ professional-cv-website/
 │   ├── script.js          # Mejoras en JavaScript
 │   └── script.min.js      # JavaScript minificado
 ├── images/
-│   └── profile.jpg        # Foto profesional
-├── docs/                  # Documentación
+│   └── IMG_1384cd_optimized.jpg   # Foto profesional
+├── server.js              # Servidor Node/Express para Azure Web App
+├── package.json           # Dependencias y script de inicio
 ├── .gitignore             # Exclusiones de Git
 └── README.md              # Este archivo
 ```
 
 ## Desarrollo local
 
-1. Clona este repositorio:
+1. Clona este repositorio e instala dependencias:
    ```bash
    git clone https://github.com/bricenojuliana/NUTI_cloud-computing-project.git
-   cd professional-cv-website
+   cd NUTI_cloud-computing-project
+   npm install
    ```
 
-2. Abre `index.html` en tu navegador:
+2. Ejecuta el servidor:
+   ```bash
+   npm start
+   ```
+
+3. O abre `index.html` directamente en tu navegador:
    ```bash
    # En macOS
    open index.html
@@ -62,13 +69,13 @@ professional-cv-website/
    start index.html
    ```
 
-3. O usa un servidor web local:
+4. O usa un servidor web alternativo:
    ```bash
    python -m http.server 8000
    # o: npx http-server
    ```
 
-4. Navega a `http://localhost:8000` en tu navegador
+5. Navega a `http://localhost:8080` (con `npm start`) o `http://localhost:8000` en tu navegador
 
 ## Licencia
 

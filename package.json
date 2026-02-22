@@ -1,5 +1,12 @@
 {
   "name": "professional-cv-website",
   "version": "1.0.0",
-  "description": "Sitio web estático de CV profesional para despliegue en Azure App Service"
+  "description": "Sitio web estático de CV profesional para despliegue en Azure App Service",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
